@@ -4,3 +4,10 @@
 !LR_breast_cancer_prediction.py
 !breast_cancer_prediction.py
 !breast_cancer.csv
+!app.py
+!requirements.txt
+!render.yaml
+!templates/
+!templates/**
+!static/
+!static/**

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f5">
+  <title>Breast Cancer Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">MACHINE LEARNING PROJECT</p>
+      <h1>Breast Cancer Prediction</h1>
+      <p class="intro">Explore how two classification models interpret measurements from the Wisconsin dataset.</p>
+    </header>
+
+    <section class="card input-card" aria-labelledby="measurements-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PATIENT MEASUREMENTS</p>
+          <h2 id="measurements-title">Enter feature values</h2>
+        </div>
+        <span class="feature-count" id="feature-count">Loading features…</span>
+      </div>
+
+      <div class="toolbar" aria-label="Sample controls">
+        <button class="button button-secondary" id="benign-sample" type="button">Load benign sample</button>
+        <button class="button button-secondary" id="malignant-sample" type="button">Load malignant sample</button>
+        <button class="button button-quiet" id="clear-button" type="button">Clear</button>
+      </div>
+
+      <p class="message" id="form-message" role="status" aria-live="polite"></p>
+      <form id="prediction-form">
+        <div class="feature-grid" id="feature-grid"></div>
+        <div class="form-footer">
+          <p class="form-hint">Enter all measurements to compare the model predictions.</p>
+          <button class="button button-primary" id="predict-button" type="submit">Predict</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card result-card" id="result-card" aria-labelledby="result-title" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MODEL OUTPUT</p>
+          <h2 id="result-title">Prediction results</h2>
+        </div>
+      </div>
+      <div class="result-grid">
+        <article class="result-model">
+          <h3>Logistic Regression</h3>
+          <span class="prediction-badge" id="logistic-prediction"></span>
+          <div class="probability-row">
+            <span>Probability of cancer</span>
+            <strong id="logistic-probability"></strong>
+          </div>
+          <div class="progress-track" role="presentation">
+            <span class="progress-fill" id="logistic-bar"></span>
+          </div>
+        </article>
+        <article class="result-model">
+          <h3>Support Vector Machine</h3>
+          <span class="prediction-badge" id="svm-prediction"></span>
+          <div class="probability-row">
+            <span>Probability of cancer</span>
+            <strong id="svm-probability"></strong>
+          </div>
+          <div class="progress-track" role="presentation">
+            <span class="progress-fill" id="svm-bar"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="about-title">
+      <p class="eyebrow">A QUICK LOOK</p>
+      <h2 id="about-title">About the model</h2>
+      <p class="about-copy">Both models are trained on the same stratified train/test split. Scores below reflect performance on the held-out test data.</p>
+      <p class="message" id="stats-message" role="status" aria-live="polite"></p>
+      <div class="stats-grid" id="stats-grid"></div>
+    </section>
+
+    <footer>Educational project only. Not a medical diagnosis tool.</footer>
+  </main>
+</body>
+</html>
